@@ -2,6 +2,7 @@ package com.example.dao.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -19,6 +20,7 @@ public class AreaDaoTest {
 	@Autowired
 	private AreaDao areaDao;
 	@Test
+	@Ignore
 	public void testQueryArea() {
 		List<Area> areaList=areaDao.queryArea();
 		assertEquals(2, areaList.size());  //断言测试
@@ -27,26 +29,37 @@ public class AreaDaoTest {
 	@Test
 	@Ignore
 	public void testQueryAreaById() {
-		List<Area> areaList=areaDao.queryArea();
-		assertEquals(2, areaList.size());  //断言测试
+		Area area=areaDao.queryAreaById(1);
+		assertEquals("东苑", area.getAreaName());
 	}
 
 	@Test
 	@Ignore
 	public void testInsertArea() {
-		fail("Not yet implemented");
+	Area area=new Area();
+	area.setAreaName("南苑");
+	area.setPriority(1);
+	int effectedNum=areaDao.insertArea(area);
+	assertEquals(1, effectedNum);
 	}
 
 	@Test
 	@Ignore
 	public void testUpdateArea() {
-		fail("Not yet implemented");
+	Area area=new Area();
+	area.setAreaName("西苑");
+	area.setAreaId(3);
+	area.setLastEditTime(new Date());
+	int effectedNum=areaDao.updateArea(area);
+	assertEquals(1, effectedNum);
+
 	}
 
 	@Test
-	@Ignore
 	public void testDeleteArea() {
-		fail("Not yet implemented");
+		int effectedNum=areaDao.deleteArea(3);
+		assertEquals(1, effectedNum);
+	
 	}
 
 }
