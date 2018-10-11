@@ -59,13 +59,11 @@ public class AreaServiceImpl implements AreaService{
 	
 	@Override
 	public Area getAreaById(int areaId) {
-		// TODO Auto-generated method stub
 		return areaDao.queryAreaById(areaId);
 	}
 	
 	@Override
 	public List<Area> getAreaList() {
-		// TODO Auto-generated method stub
 		return areaDao.queryArea();
 	}
 	
